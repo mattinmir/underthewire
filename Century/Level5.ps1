@@ -4,4 +4,12 @@
 # - If the short name of the domain is "blob" and the file on the desktop is named "1234", the password would be "blob1234".
 # - The password will be lowercase no matter how it appears on the screen. 
 
-Get-ADDomain | Select Name -ExpandProperty Name
+. .\connect.ps1
+
+Connect "Century5" "61580"
+
+$filename = ls C:\users\century5\desktop\ | Select Name -ExpandProperty Name
+
+"$(Get-ADDomain | Select Name -ExpandProperty Name)$filename"
+
+# underthewire3347
