@@ -8,3 +8,8 @@
 
 Connect "Century11" "windowsupdates110"
 
+$folders = @("Contacts", "Desktop", "Documents", "Downloads", "Favorites", "Music", "Videos")
+
+$folders | Foreach-Object {Get-ChildItem -Path "C:\users\century11\$_" -Recurse -hidden -ErrorAction SilentlyContinue} | Where-Object {$_.mode[0] -ne "d"} | Select-Object Name -ExpandProperty Name
+
+# secret_sauce
